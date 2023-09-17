@@ -30,6 +30,16 @@ Change _server\src\main\resources\application.properties_ file username and pass
 
 ### Backend Project Setup
 
+Set Environment Variables
+
+```properties
+PROD_DB_HOST=DB_HOST
+PROD_DB_PORT=DB_PORT
+PROD_DB_NAME=railway
+PROD_DB_PASSWORD=DB_PWD
+PROD_DB_USERNAME=PB_USER
+```
+
 ```sh
 ./gradlew bootRun
 ```
