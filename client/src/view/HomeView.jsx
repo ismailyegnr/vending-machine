@@ -9,10 +9,12 @@ import ProductCard from "../components/ProductCard";
 import ProgressLoading from "../components/ProgressLoading";
 import CustomToast from "../components/CustomToast";
 import useLocalStorage from "../hooks/useLocalStorage";
+import { useAuth } from "../utils/auth";
 
 function HomeView() {
   const { machine, status, error } = useSelector((state) => state.machine);
   const dispatch = useDispatch();
+  const auth = useAuth();
 
   const [userMoney, setUserMoney] = useLocalStorage("userMoney", 0);
 
@@ -20,6 +22,7 @@ function HomeView() {
     if (status === "idle") {
       dispatch(fetchMachineData());
     }
+    auth.logout();
   }, []);
 
   useEffect(() => {
