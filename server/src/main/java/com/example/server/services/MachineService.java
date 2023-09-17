@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.example.server.entities.Machine;
 import com.example.server.entities.MachineProducts;
 import com.example.server.repos.MachineRepository;
+import com.example.server.requests.MachineLoginRequest;
 import com.example.server.requests.MachineUpdateRequest;
 import com.example.server.responses.MachineResponse;
 
@@ -56,6 +57,20 @@ public class MachineService {
 
     public Optional<Machine> getMachineById(Long machineId) {
         return machineRepository.findById(machineId);
+    }
+
+    public Machine loginMachineSupplier(Long machineId, MachineLoginRequest loginRequest) {
+        Optional<Machine> machine = machineRepository.findById(machineId);
+
+        if (machine.isPresent()) {
+            Machine foundMachine = machine.get();
+
+            if (foundMachine.getPassword().equals(loginRequest.getPassword())) {
+                return foundMachine;
+            }
+
+        }
+        return null;
     }
 
 }

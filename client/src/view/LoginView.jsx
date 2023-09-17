@@ -20,7 +20,7 @@ function LoginView() {
       await auth.login(password);
       navigate("/supplier", { replace: true });
     } catch (error) {
-      setError(error);
+      setError(error.message);
     }
   };
 
@@ -36,7 +36,7 @@ function LoginView() {
         )}
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
+            <Form.Label>Supplier Password</Form.Label>
             <Form.Control
               type="password"
               placeholder="Password"

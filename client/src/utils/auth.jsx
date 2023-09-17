@@ -1,19 +1,32 @@
 import React, { createContext, useContext, useState } from "react";
 
+import { API_BASE_URL, MACHINE_ID } from "../data/constants";
+import axios from "axios";
+
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false);
 
-  function login(password) {
-    return new Promise((resolve, reject) => {
-      if (password === "password") {
+  async function login(password) {
+    try {
+      const response = await axios.post(
+        `${API_BASE_URL}/machines/${MACHINE_ID}`,
+        {
+          password: password,
+        }
+      );
+
+      const data = response.data;
+
+      if (data) {
         setLoggedIn(true);
-        resolve("success");
       } else {
-        reject("Incorrect Password");
+        throw new Error("Incorrect Password");
       }
-    });
+    } catch (error) {
+      throw error;
+    }
   }
 
   function logout() {
