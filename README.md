@@ -34,15 +34,26 @@ Set Environment Variables
 Add .env file into server folder with these properties
 
 ```properties
-PROD_DB_HOST=DB_HOST
-PROD_DB_PORT=DB_PORT
-PROD_DB_NAME=railway
-PROD_DB_PASSWORD=DB_PWD
-PROD_DB_USERNAME=PB_USER
+PROD_DB_HOST={DB_HOST}
+PROD_DB_PORT={DB_PORT}
+PROD_DB_NAME={DB_NAME}
+PROD_DB_PASSWORD={DB_PWD}
+PROD_DB_USERNAME={PB_USER}
 ```
 
-```sh
-./gradlew bootRun
+Vscode launch configuration
+
+```properties
+{
+    "type": "java",
+    "name": "Spring Boot-ServerApplication<server>",
+    "request": "launch",
+    "cwd": "${workspaceFolder}",
+    "mainClass": "com.example.server.ServerApplication",
+    "projectName": "server",
+    "args": "",
+    "envFile": "${workspaceFolder}/.env"
+}
 ```
 
 ## Database Entity Relations

@@ -7,6 +7,15 @@ plugins {
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 
+jar {  
+    manifest {  
+        attributes(     
+                'Main-Class': 'com.example.server.ServerApplication'  
+        )  
+    }  
+}  
+
+
 java {
 	sourceCompatibility = '17'
 }
