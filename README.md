@@ -31,6 +31,7 @@ Change _server\src\main\resources\application.properties_ file username and pass
 ### Backend Project Setup
 
 Set Environment Variables
+Add .env file into server folder with these properties
 
 ```properties
 PROD_DB_HOST=DB_HOST
